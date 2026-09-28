@@ -716,8 +716,8 @@ const DATA = [
   {
     id: "receber", nome: "Títulos a receber", fonte: "Origem <code>SE1</code>, gravado pelo job na <code>F75</code>",
     linhas: [
-      ["Vencimento real", "E1_VENCREA", "data", "F75_DATA", "Data que posiciona a entrada prevista no período. Já considera fim de semana e feriado."],
-      ["Vencimento original", "E1_VENCTO", "data", "—", "Informativo. O fluxo usa o vencimento real. Validar na release."],
+      ["Vencimento real", "E1_VENCREA", "data", "Fluxo de caixa", "Data que posiciona a entrada prevista no período. Já considera fim de semana e feriado."],
+      ["Vencimento original", "E1_VENCTO", "data", "Fluxo de caixa", "Informativo. O fluxo usa o vencimento real. Validar na release."],
       ["Data do recebimento", "E5_DTDISPO (SE5)", "data", "Saldo bancário", "Data de disponibilidade do dinheiro no banco, usada no realizado."],
       ["Título em aberto, vencimento futuro", "Com saldo, E1_FLUXO diferente de N", "sim", "Fluxo de caixa", "Entrada prevista pelo saldo e vencimento do título."],
       ["Título em aberto, vencimento futuro", "Com saldo, E1_FLUXO diferente de N", "dep", "F75, na data de vencimento", "Entrada prevista pelo saldo e vencimento do título."],
@@ -727,8 +727,8 @@ const DATA = [
       ["Marcado para não participar", "E1_FLUXO = N", "nao", "—", "Campo do próprio título que o tira do fluxo."],
       ["Moeda estrangeira", "E1_MOEDA diferente de 1", "sim", "Fluxo de caixa", "Convertido pela taxa do dia, contemplado no fluxo de caixa."],
       ["Título excluído", "Registro deletado", "nao", "—", "Não contemplado no fluxo de caixa."],
-      ["Filtrado por ponto de entrada", "Excluído pelo NGFJOBQR", "nao", "—", "Não é gravado na F75."],
-      ["Incluir/alterar/excluir titulos depois da última execução do job", "Data posterior a MV_TFCJOBT", "nao", "—", "Aparece na próxima execução do FINA711."]
+      ["Filtrado por ponto de entrada", "Excluído pelo NGFJOBQR", "nao", "—", "Não é contemplado no fluxo de caixa."],
+      ["Incluir/alterar/excluir titulos depois da última execução do job", "Data posterior a MV_TFCJOBT", "nao", "—", "Aparece na próxima execução do FINA711 (Carga automátia)."]
     ]
   },
   {
@@ -774,7 +774,7 @@ const DATA = [
     linhas: [
       ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "F76_DATA", "Uma data por parcela (F76_SEQ). É a data usada no filtro."],
       ["Data base do cálculo", "C7_DATPRF (entrega prevista)", "data", "F76_DATA", "Ponto de partida da condição de pagamento. Validar na release."],
-      ["Pedido em aberto", "C7_FLUXO = S e opção Exibir Pedidos de Compra ligada", "sim", "F76, uma linha por parcela", "Saídas previstas pela condição de pagamento."],
+      ["Pedido em aberto", "C7_FLUXO = S e opção Exibir Pedidos de Compra ligada", "sim", "Fluxo de caixa.", "Saídas previstas pela condição de pagamento."],
       ["Opção de pedidos de compra desligada", "Exibir Pedidos de Compra desmarcada", "nao", "—", "Nenhum pedido de compra entra no fluxo, mesmo gravado na F76."],
       ["Marcado para não participar", "C7_FLUXO = N", "nao", "—", "Vale para pedido de compra e autorização de entrega."],
       ["Autorização de entrega", "Mesmo controle do C7_FLUXO", "sim", "F76", "Segue a regra do campo C7_FLUXO."],
