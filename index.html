@@ -772,14 +772,15 @@ const DATA = [
   {
     id: "compra", nome: "Pedidos de compra", fonte: "Origem <code>SC7</code>, gravado pelo job na <code>F76</code>",
     linhas: [
-      ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "F76_DATA", "Uma data por parcela (F76_SEQ). É a data usada no filtro."],
+      ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "F76_DATA", "Uma data por parcela (F76_SEQ - ). É a data usada no filtro."],
       ["Data base do cálculo", "C7_DATPRF (entrega prevista)", "data", "F76_DATA", "Ponto de partida da condição de pagamento. Validar na release."],
       ["Pedido em aberto", "C7_FLUXO = S e opção Exibir Pedidos de Compra ligada", "sim", "Fluxo de caixa.", "Saídas previstas pela condição de pagamento."],
       ["Opção de pedidos de compra desligada", "Exibir Pedidos de Compra desmarcada", "nao", "—", "Nenhum pedido de compra entra no fluxo, mesmo gravado na F76(Carga Job)."],
       ["Marcado para não participar", "C7_FLUXO = N", "nao", "—", "Vale para pedido de compra e autorização de entrega."],
+      ["Marcado para não participar", "C7_FLUXO = N", "dep", "—", "Vale para pedido de compra e autorização de entrega."],
       ["Autorização de entrega", "Mesmo controle do C7_FLUXO", "sim", "Fluxo de caixa", "Segue a regra do campo C7_FLUXO."],
-      ["Recebido parcialmente", "Parte já entrou por nota", "sim", "Flux de caixa, pelo saldo", "Só o saldo não recebido continua como pedido."],
-      ["Recebido totalmente", "Sem saldo a receber", "nao", "Fluxo de caixa (se a TES gera duplicata)", "Deixa de ser pedido. Passa a aparecer como título a pagar."],
+      ["Recebido parcialmente", "Parte já entrou por nota", "sim", "Fluxo de caixa, pelo saldo", "Só o saldo não recebido continua como pedido."],
+      ["Recebido totalmente", "Sem saldo a receber", "nao", " - ", "Deixa de ser pedido. Passa a aparecer como título a pagar."],
       //["Pedido bloqueado (não liberado)", "Campo F76_BLQLIB", "dep", "F76", "Com Exibir apenas pedidos liberados, fica de fora. Entra quando a opção de exibir pedidos bloqueados (não liberados) está ligada."],
       //["Pedido com adiantamento vinculado", "PA relacionado ao pedido (FIE)", "dep", "F76, pelo líquido", "Com Considerar adiantamento dos pedidos, o valor do PA é subtraído do pedido."],
       ["Pedido de compra de máquinas", "Opção Exibir Pedidos Compra Máquina", "dep", "Períodos do fluxo", "Voltado ao segmento de Concessionárias (SIGAVEI). Sem esse módulo, pode ficar desligada."],
