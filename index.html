@@ -754,7 +754,7 @@ const DATA = [
     id: "venda", nome: "Pedidos de venda", fonte: "Origem <code>SC5</code>, <code>SC6</code> e <code>SC9</code>, gravado pelo job na <code>F76</code>",
     linhas: [
       ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "F76_DATA", "Uma data por parcela (F76_SEQ). É a data usada no filtro."],
-      ["Data base do cálculo", "C6_ENTREG ou C5_EMISSAO", "data", "F76_DATA", "Ponto de partida da condição de pagamento. Validar qual dos dois a release usa."],
+      ["Data base do cálculo", "C5_EMISSAO", "data", "F76_DATA", "Ponto de partida da condição de pagamento."],
       ["Parcelas informadas no pedido", "C5_DATA1 a C5_DATA4 (condição tipo 9)", "data", "F76_DATA", "Quando a condição é por datas informadas, valem as datas do pedido."],
       ["Pedido em aberto, não faturado", "Opção Exibir Pedidos de Venda ligada", "sim", "F76, uma linha por parcela", "Parcelas calculadas pela condição de pagamento (F76_COND e F76_SEQ)."],
       ["Opção de pedidos de venda desligada", "Exibir Pedidos de Venda desmarcada", "nao", "—", "Nenhum pedido de venda entra no fluxo, mesmo gravado na F76."],
