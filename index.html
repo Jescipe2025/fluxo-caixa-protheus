@@ -734,8 +734,8 @@ const DATA = [
   {
     id: "pagar", nome: "Títulos a pagar", fonte: "Origem <code>SE2</code>, gravado pelo job na <code>F75</code>",
     linhas: [
-      ["Vencimento real", "E2_VENCREA", "data", "F75_DATA", "Data que posiciona a saída prevista no período."],
-      ["Vencimento original", "E2_VENCTO", "data", "—", "Informativo. O fluxo usa o vencimento real. Validar na release."],
+      ["Vencimento real", "E2_VENCREA", "data", "Flux de caixa", "Data que posiciona a saída prevista no período."],
+      ["Vencimento original", "E2_VENCTO", "data", "Fluxo de caixa", "Informativo. O fluxo usa o vencimento real. Validar na release."],
       ["Data do pagamento", "E5_DTDISPO (SE5)", "data", "Saldo bancário", "Data de disponibilidade do movimento no banco, usada no realizado."],
       ["Título em aberto, vencimento futuro", "Com saldo, E2_FLUXO diferente de N", "sim", "F75, na data de vencimento", "Saída prevista pelo saldo do título."],
       ["Título vencido e em aberto", "Opção Exibir Títulos de saídas vencidos", "dep", "F75", "Com a opção ligada, os títulos de saída vencidos entram no fluxo."],
@@ -753,20 +753,20 @@ const DATA = [
   {
     id: "venda", nome: "Pedidos de venda", fonte: "Origem <code>SC5</code>, <code>SC6</code> e <code>SC9</code>, gravado pelo job na <code>F76</code>",
     linhas: [
-      ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "F76_DATA", "Uma data por parcela (F76_SEQ). É a data usada no filtro."],
-      ["Data base do cálculo", "C5_EMISSAO", "data", "F76_DATA", "Ponto de partida da condição de pagamento."],
-      ["Parcelas informadas no pedido", "C5_DATA1 a C5_DATA4 (condição tipo 9)", "data", "F76_DATA", "Quando a condição é por datas informadas, valem as datas do pedido."],
-      ["Pedido em aberto, não faturado", "Opção Exibir Pedidos de Venda ligada", "sim", "F76, uma linha por parcela", "Parcelas calculadas pela condição de pagamento (F76_COND e F76_SEQ)."],
-      ["Opção de pedidos de venda desligada", "Exibir Pedidos de Venda desmarcada", "nao", "—", "Nenhum pedido de venda entra no fluxo, mesmo gravado na F76."],
-      ["TES que não gera financeiro", "F4_DUPLIC = N", "nao", "F76", "Só pedidos com TES que gera financeiro consta no Fluxo de Caixa"],
-      ["Parcelas em anos diferentes", "Condição de 12 parcelas emitida em setembro", "sim", "F76, todas as parcelas", "Atenção a filtros de ano na consulta: eles escondem parte das parcelas."],
-      ["Faturado parcialmente", "Parte do item já virou nota", "sim", "F76, pelo saldo", "Só o saldo não faturado continua como pedido."],
-      ["Faturado totalmente", "Sem saldo a faturar", "nao", "F75 (se a TES gera duplicata)", "Deixa de ser pedido. Passa a aparecer como título a receber."],
-      ["Pedido bloqueado (não liberado)", "Campo F76_BLQLIB", "dep", "F76", "Não sõ contemplados no fluxo de caixa."],
-      ["Pedido com adiantamento vinculado", "RA relacionado ao pedido (FIE)", "dep", "F76, pelo líquido", "Com Considerar adiantamento dos pedidos, o valor do RA é subtraído do pedido."],
+      ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "Fluxo de caixa", "Uma data por parcela (F76_SEQ - Carga). É a data usada no filtro."],
+      ["Data base do cálculo", "C5_EMISSAO", "data", "Fluxo de caixa", "Ponto de partida da condição de pagamento."],
+      ["Parcelas informadas no pedido", "C5_DATA1 a C5_DATA4 (condição tipo 9)", "data", "Fluxo de caixa", "Quando a condição é por datas informadas, valem as datas do pedido."],
+      ["Pedido em aberto, não faturado", "Opção Exibir Pedidos de Venda ligada", "sim", "Fluxo de caixa, uma linha por parcela", "Parcelas calculadas pela condição de pagamento (F76_COND e F76_SEQ - Carga Job)."],
+      ["Opção de pedidos de venda desligada", "Exibir Pedidos de Venda desmarcada", "nao", "—", "Nenhum pedido de venda entra no fluxo, mesmo gravado na F76 (Carga do Job)."],
+      ["TES que não gera financeiro", "F4_DUPLIC = N", "nao", " - ", "Só pedidos com TES que gera financeiro consta no Fluxo de Caixa"],
+      ["Parcelas em anos diferentes", "Condição de 12 parcelas emitida em setembro", "sim", "Fluxo de caixa, todas as parcelas", "Atenção a filtros de ano na consulta: eles escondem parte das parcelas."],
+      ["Faturado parcialmente", "Parte do item já virou nota", "sim", "Fluxo de caixa, pelo saldo", "Só o saldo não faturado continua como pedido."],
+      ["Faturado totalmente", "Sem saldo a faturar", "nao", " - ", "Deixa de ser pedido. Passa a aparecer como título a receber."],
+      ["Pedido bloqueado (não liberado)", "Campo F76_BLQLIB", "dep", "-", "Não sõ contemplados no fluxo de caixa."],
+      ["Pedido com adiantamento vinculado", "RA relacionado ao pedido (FIE)", "dep", "Fluxo de caixa, pelo líquido", "Com Considerar adiantamento dos pedidos, o valor do RA é subtraído do pedido."],
       ["Eliminado por resíduo", "Saldo eliminado", "nao", "—", "Não é contemplado no fluxo de caixa - Aguardar a próxima carga"],
       ["Pedido excluído", "Registro deletado", "nao", "—", "Não é contemplado no fluxo de caixa - Aguardar a próxima carga"],
-      ["Filtrado por ponto de entrada", "Excluído pelo NGFJOBQR", "nao", "—", "Não é gravado na F76."]
+      ["Filtrado por ponto de entrada", "Excluído pelo NGFJOBQR", "nao", "—", "Não é gravado no Fluxo de caixa."]
     ]
   },
   {
