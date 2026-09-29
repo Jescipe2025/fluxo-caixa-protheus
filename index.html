@@ -828,10 +828,10 @@ const DATA = [
       ["Data da aplicação", "Data da aplicação informada", "data", "Saldo em aplicações", "Início da aplicação."],
       ["Data de liberação", "Campo Data da Liberação preenchido", "data", "Saldo em aplicações", "Usada quando o parâmetro está em Considera Liberados."],
       ["Vencimento ou resgate previsto", "Data de vencimento da aplicação preeenchida", "data", "Saldo em aplicações", "Validar se a release usa essa data para projetar a entrada."],
-      ["Aplicação em aberto", "Considerar Aplicações = Todas", "sim", "Apenas no gráfico do fundo de caixa", "Mostra o total aplicado em aberto."],
+      ["Aplicação em aberto", "Considerar Aplicações = Todas", "sim", "Fluxo de caixa", "Mostra o total aplicado em aberto."],
       ["Qualquer aplicação", "Considerar Aplicações = Não considera", "nao", "—", "Aplicação não constam no gráfico do fluxo de caixa."],
       ["Qualquer aplicação", "Considerar Aplicações = Não considera", "dep", "—", "Aplicação não constam no gráfico do fluxo de caixa."],
-      ["Aplicação com data de liberação", "Considera Liberados, data de liberação preenchida", "sim", "Apenas no gráfico do fundo de caixa", ""],
+      ["Aplicação com data de liberação", "Considera Liberados, data de liberação preenchida", "sim", "Fluxo de caixa", "Mostra total aplicado efetivado"],
       ["Aplicação sem data de liberação", "Considera Liberados, data de liberação não informada", "nao", "—", "Primeiro ponto a verificar quando uma aplicação some do fluxo."],
       //["Vencimento futuro da aplicação", "Data de resgate prevista na SEH", "dep", "Saldo em aplicações", "Entra como saldo aplicado. Validar se a release projeta a entrada na data de vencimento."],
       ["Aplicação excluída ou estornada", "Registro cancelado", "nao", "—", "Aguardar a proxima carga"]
@@ -840,30 +840,29 @@ const DATA = [
   {
     id: "resgates", nome: "Resgates e rendimentos", fonte: "Movimentos na <code>SEI</code> e no banco pela <code>SE5</code>",
     linhas: [
-      ["Data do movimento", "Data do movimento na SEI", "data", "Saldo em aplicações - Fuxo de caixa", "Resgates e rendimentos atualizam o saldo a partir dessa data."],
-      ["Data no banco", "E5_DTDISPO preenchido", "data", "Saldo bancário - Fluxo de caixa", "Data em que o resgate entra no banco e no realizado."],
-      ["Resgate parcial", "Movimento de resgate com saldo restante", "sim", "Saldo em aplicações e saldo bancário", "O saldo aplicado diminui e o valor resgatado entra no banco."],
+      ["Data do movimento", "Data do movimento", "data", "Saldo em aplicações - Fuxo de caixa", "Resgates e rendimentos atualizam o saldo a partir dessa data."],
+      //["Data no banco", "E5_DTDISPO preenchido", "data", "Saldo bancário - Fluxo de caixa", "Data em que o resgate entra no banco e no realizado."],
+      ["Resgate parcial", "Movimento de resgate com saldo restante", "sim", "Gráfico do Saldo em aplicações e saldo bancário", "O saldo aplicado diminui e o valor resgatado entra no banco."],
       ["Resgate total", "Aplicação sem saldo a resgatar", "nao", " ", "Sai do saldo em aplicações. O dinheiro já está no banco."],
-      ["Rendimento apropriado", "Movimento de rendimento na SEI", "dep", "Saldo em aplicações", "Atualiza o saldo da aplicação."],
-      ["Aplicação e resgate no realizado", "Resgate Realizado", "sim", "Resumo financeiro do FINR770", "Aparecem junto com empréstimos, juros, multas e transferências."],
-      ["Movimento cancelado ou excluído", "Registro cancelado", "nao", "—", "Não aparece no Fluxo de caixa."],
-      ["Resgate excluído ou estornada", "Registro cancelado", "nao", "—", "Aguardar a proxima carga"]
-    ]
+      //["Rendimento apropriado", "Movimento de rendimento efetuao", "dep", "Saldo em aplicações", "Atualiza o saldo da aplicação."],
+      ["Aplicação e resgate no realizado", "Resgate Realizado", "sim", "Saldo bacário do fluxo de caixa", "Aparecem junto com empréstimos, juros, multas e transferências."],
+      ["Movimento cancelado/excluído/estornado", "Registro resgate invalidado", "nao", "—", "Não aparece no Fluxo de caixa. Aguardar a próxima carga"],
+     ]
   },
   {
     id: "orcamentos", nome: "Orçamentos", fonte: "Lidos direto da <code>SE7</code>, sem passar pelo job. Receita ou despesa definida pela natureza na <code>SED</code>",
     linhas: [
       ["Mês do orçamento", "E7_ANO e a coluna do mês (janeiro a dezembro)", "data", "Fluxo de caixa, no mês orçado", "Cada mês tem o seu próprio valor digitado na SE7. Com periodicidade menor que mensal, validar no ambiente em qual dia do mês o valor é posicionado."],
-      ["Orçamento de receita", "Natureza de receita (ED_COND = R) e opção Exibir orçados receita ligada", "sim", "Fluxo de caixa, como entrada orçada", "O fluxo sabe que é receita pela natureza do orçamento, não pela SE7."],
-      ["Orçamento de despesa", "Natureza de despesa (ED_COND = D) e opção Exibir orçados despesa ligada", "sim", "Fluxo de caixa, como saída orçada", "O fluxo sabe que é despesa pela natureza do orçamento, não pela SE7."],
+      ["Orçamento de receita", "Natureza de receita", "sim", "Gráfico do fluxo de caixa.", "O fluxo sabe que é receita pela natureza do orçamento."],
+      ["Orçamento de despesa", "Natureza de despesa", "sim", "Gráfico do fluxo de caixa.", "O fluxo sabe que é despesa pela natureza do orçamento."],
       ["Opção de orçados receita desligada", "Exibir orçados receita desmarcada", "nao", "—", "Nenhum orçamento de natureza de receita entra no fluxo."],
       ["Opção de orçados despesa desligada", "Exibir orçados despesa desmarcada", "nao", "—", "Nenhum orçamento de natureza de despesa entra no fluxo."],
-      ["Orçamento em moeda estrangeira", "E7_MOEDA diferente de 1", "dep", "Fluxo de caixa, no mês orçado", "O campo moeda indica se o valor está em real ou em moeda estrangeira. Validar no ambiente a taxa usada na conversão."],
+      ["Orçamento em moeda estrangeira", "E7_MOEDA diferente de 1", "dep", "Gráfico do fluxo de caixa., no mês orçado", "O campo moeda indica se o valor está em real ou em moeda estrangeira. Validar no ambiente a taxa usada na conversão."],
       ["Mês sem valor digitado", "Coluna do mês zerada na SE7", "nao", "—", "Não gera valor orçado naquele período."],
-      ["Aba Consolidado", "Qualquer orçamento da SE7", "nao", "—", "O fluxo consolidado não considera orçamentos, mesmo com as opções de orçados ligadas."],
-      ["Incluir/alterar orçamento depois da última execução do job", "Data posterior a MV_TFCJOBT", "sim", "Fluxo de caixa", "Como a SE7 é lida direto, a alteração aparece ao abrir ou atualizar o painel, sem esperar o FINA711."],
-      ["Filtrado por ponto de entrada", "Filtro do NGFJOBQR", "sim", "Fluxo de caixa", "O ponto de entrada atua só na query do job e não alcança a SE7."],
-      ["Orçamento excluído", "Registro deletado na SE7", "nao", "—", "Some do fluxo ao atualizar o painel."]
+      ["Aba Consolidado", "Qualquer orçamento da SE7", "nao", "—", "Gráfico do fluxo de caixa. O fluxo consolidado não considera orçamentos, mesmo com as opções de orçados ligadas."],
+      ["Incluir/alterar orçamento depois da última execução do job", "Data posterior a MV_TFCJOBT", "sim", "Grafico fluxo de caixa", "Como a SE7 é lida direto, a alteração aparece ao abrir ou atualizar o painel, sem esperar o FINA711."],
+      ["Filtrado por ponto de entrada", "Filtro do NGFJOBQR", "sim", "Gráfico do fluxo de caixa.", "O ponto de entrada atua só na query do job e não alcança a SE7."],
+      ["Orçamento excluído", "Registro deletado na SE7", "nao", "—", "Some do gráfico do fluxo ao atualizar o painel."]
     ]
   }
 ];
