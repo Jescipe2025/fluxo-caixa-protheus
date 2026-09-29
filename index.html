@@ -840,13 +840,13 @@ const DATA = [
   {
     id: "resgates", nome: "Resgates e rendimentos", fonte: "Movimentos na <code>SEI</code> e no banco pela <code>SE5</code>",
     linhas: [
-      ["Data do movimento", "Data do movimento na SEI", "data", "Saldo em aplicações", "Resgates e rendimentos atualizam o saldo a partir dessa data."],
-      ["Data no banco", "E5_DTDISPO (SE5)", "data", "Saldo bancário e FINR770", "Data em que o resgate entra no banco e no realizado."],
+      ["Data do movimento", "Data do movimento na SEI", "data", "Saldo em aplicações - Fuxo de caixa", "Resgates e rendimentos atualizam o saldo a partir dessa data."],
+      ["Data no banco", "E5_DTDISPO preenchido", "data", "Saldo bancário - Fluxo de caixa", "Data em que o resgate entra no banco e no realizado."],
       ["Resgate parcial", "Movimento de resgate com saldo restante", "sim", "Saldo em aplicações e saldo bancário", "O saldo aplicado diminui e o valor resgatado entra no banco."],
-      ["Resgate total", "Aplicação sem saldo", "nao", "Saldo bancário (SE5)", "Sai do saldo em aplicações. O dinheiro já está no banco."],
+      ["Resgate total", "Aplicação sem saldo a resgatar", "nao", " ", "Sai do saldo em aplicações. O dinheiro já está no banco."],
       ["Rendimento apropriado", "Movimento de rendimento na SEI", "dep", "Saldo em aplicações", "Atualiza o saldo da aplicação."],
       ["Aplicação e resgate no realizado", "Fluxo de Caixa Realizado (FINR770)", "sim", "Resumo financeiro do FINR770", "Aparecem junto com empréstimos, juros, multas e transferências."],
-      ["Movimento cancelado ou excluído", "Registro cancelado na SE5", "nao", "—", "Não aparece no FINR770."],
+      ["Movimento cancelado ou excluído", "Registro cancelado", "nao", "—", "Não aparece no Fluxo de caixa."],
       ["Resgate excluído ou estornada", "Registro cancelado", "nao", "—", "Aguardar a proxima carga"]
     ]
   },
