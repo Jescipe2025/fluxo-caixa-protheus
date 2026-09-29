@@ -852,17 +852,17 @@ const DATA = [
   {
     id: "orcamentos", nome: "Orçamentos", fonte: "Lidos direto da <code>SE7</code>, sem passar pelo job. Receita ou despesa definida pela natureza na <code>SED</code>",
     linhas: [
-      ["Mês do orçamento", "E7_ANO e a coluna do mês (janeiro a dezembro)", "data", "Fluxo de caixa, no mês orçado", "Cada mês tem o seu próprio valor digitado na SE7. Com periodicidade menor que mensal, validar no ambiente em qual dia do mês o valor é posicionado."],
+      ["Ano orçamento", "Coluna ano (janeiro a dezembro)", "data", "Fluxo de caixa, no mês orçado", "Cada mês tem o seu próprio valor digitado na SE7. Com periodicidade menor que mensal, validar no ambiente em qual dia do mês o valor é posicionado."],
       ["Orçamento de receita", "Natureza de receita", "sim", "Gráfico do fluxo de caixa.", "O fluxo sabe que é receita pela natureza do orçamento."],
       ["Orçamento de despesa", "Natureza de despesa", "sim", "Gráfico do fluxo de caixa.", "O fluxo sabe que é despesa pela natureza do orçamento."],
       ["Opção de orçados receita desligada", "Exibir orçados receita desmarcada", "nao", "—", "Nenhum orçamento de natureza de receita entra no fluxo."],
       ["Opção de orçados despesa desligada", "Exibir orçados despesa desmarcada", "nao", "—", "Nenhum orçamento de natureza de despesa entra no fluxo."],
-      ["Orçamento em moeda estrangeira", "E7_MOEDA diferente de 1", "dep", "Gráfico do fluxo de caixa., no mês orçado", "O campo moeda indica se o valor está em real ou em moeda estrangeira. Validar no ambiente a taxa usada na conversão."],
-      ["Mês sem valor digitado", "Coluna do mês zerada na SE7", "nao", "—", "Não gera valor orçado naquele período."],
-      ["Aba Consolidado", "Qualquer orçamento da SE7", "nao", "—", "Gráfico do fluxo de caixa. O fluxo consolidado não considera orçamentos, mesmo com as opções de orçados ligadas."],
-      ["Incluir/alterar orçamento depois da última execução do job", "Data posterior a MV_TFCJOBT", "sim", "Grafico fluxo de caixa", "Como a SE7 é lida direto, a alteração aparece ao abrir ou atualizar o painel, sem esperar o FINA711."],
-      ["Filtrado por ponto de entrada", "Filtro do NGFJOBQR", "sim", "Gráfico do fluxo de caixa.", "O ponto de entrada atua só na query do job e não alcança a SE7."],
-      ["Orçamento excluído", "Registro deletado na SE7", "nao", "—", "Some do gráfico do fluxo ao atualizar o painel."]
+      //["Orçamento em moeda estrangeira", "E7_MOEDA diferente de 1", "dep", "Gráfico do fluxo de caixa., no mês orçado", "O campo moeda indica se o valor está em real ou em moeda estrangeira. Validar no ambiente a taxa usada na conversão."],
+      ["Mês sem valor digitado", "Coluna do mês zerada", "nao", "—", "Não gera valor orçado naquele período."],
+      ["Aba Consolidado", "Qualquer orçamento valido", "nao", "—", "Gráfico do fluxo de caixa. O fluxo consolidado não considera orçamentos, mesmo com as opções de orçados ligadas."],
+      ["Incluir/alterar orçamento depois da última execução do job", "Orçamento ativo periodo do fluxo de caixa", "sim", "Grafico fluxo de caixa", "Como é lida direto, a alteração aparece ao abrir ou atualizar o painel, sem esperar o JOB de carga."],
+      ["Filtrado por ponto de entrada", "Filtro do NGFJOBQR", "nao", "- ", "O ponto de entrada atua só na query do JOB (CARGA) e não alcança filtra a tabela de orçamento."],
+      ["Orçamento excluído", "Sem orçamento", "nao", "—", "Some do gráfico do fluxo ao atualizar o painel."]
     ]
   }
 ];
