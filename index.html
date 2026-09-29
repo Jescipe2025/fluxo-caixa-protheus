@@ -806,8 +806,8 @@ const DATA = [
   {
     id: "compra", nome: "Pedidos de compra", fonte: "Origem <code>SC7</code>, gravado pelo job na <code>F76</code>",
     linhas: [
-      ["Data de cada parcela", "Calculada pela condição de pagamento", "data", "F76_DATA", "Uma data por parcela (F76_SEQ - ). É a data usada no filtro."],
-      ["Data base do cálculo", "C7_DATPRF (entrega prevista)", "data", "F76_DATA", "Ponto de partida da condição de pagamento. Validar na release."],
+      ["Data de cada parcela", "Calculada pela condição de pagamento", "data", " ", "Uma data por parcela. É a data usada no filtro."],
+      ["Data base do cálculo", "Data da emissão do pedido", "data", " ", "Ponto de partida da condição de pagamento. Validar na release."],
       ["Pedido em aberto", "C7_FLUXO = S e opção Exibir Pedidos de Compra ligada", "sim", "Fluxo de caixa.", "Saídas previstas pela condição de pagamento."],
       ["Opção de pedidos de compra desligada", "Exibir Pedidos de Compra desmarcada", "nao", "—", "Nenhum pedido de compra entra no fluxo, mesmo gravado na F76(Carga Job)."],
       ["Marcado no próprio pedido para não participar", "C7_FLUXO = N", "nao", "—", "Vale para pedido de compra e autorização de entrega."],
@@ -825,14 +825,14 @@ const DATA = [
   {
     id: "aplicacoes", nome: "Aplicações", fonte: "Lidas direto da <code>SEH</code>, sem passar pelo job",
     linhas: [
-      ["Data da aplicação", "EH_DATA", "data", "Saldo em aplicações", "Início da aplicação."],
-      ["Data de liberação", "Campo Data da Liberação (SEH)", "data", "Saldo em aplicações", "Usada quando o parâmetro está em Considera Liberados."],
-      ["Vencimento ou resgate previsto", "Data de vencimento da aplicação (SEH)", "data", "Saldo em aplicações", "Validar se a release usa essa data para projetar a entrada."],
-      ["Aplicação em aberto", "Considerar Aplicações = Todas", "sim", "Saldo em aplicações", "Mostra o total aplicado em aberto."],
-      ["Qualquer aplicação", "Considerar Aplicações = Não considera", "nao", "—", "Os campos de aplicação aparecem com valor 0."],
-      ["Qualquer aplicação", "Considerar Aplicações = Não considera", "dep", "—", "Os campos de aplicação aparecem com valor 0."],
-      ["Aplicação com data de liberação", "Considera Liberados, data preenchida na SEH", "sim", "Saldo em aplicações", ""],
-      ["Aplicação sem data de liberação", "Considera Liberados, data vazia na SEH", "nao", "—", "Primeiro ponto a verificar quando uma aplicação some do fluxo."],
+      ["Data da aplicação", "Data da aplicação informada", "data", "Saldo em aplicações", "Início da aplicação."],
+      ["Data de liberação", "Campo Data da Liberação preenchido", "data", "Saldo em aplicações", "Usada quando o parâmetro está em Considera Liberados."],
+      ["Vencimento ou resgate previsto", "Data de vencimento da aplicação preeenchida", "data", "Saldo em aplicações", "Validar se a release usa essa data para projetar a entrada."],
+      ["Aplicação em aberto", "Considerar Aplicações = Todas", "sim", "Apenas no gráfico do fundo de caixa", "Mostra o total aplicado em aberto."],
+      ["Qualquer aplicação", "Considerar Aplicações = Não considera", "nao", "—", "Aplicação não constam no gráfico do fluxo de caixa."],
+      ["Qualquer aplicação", "Considerar Aplicações = Não considera", "dep", "—", "Aplicação não constam no gráfico do fluxo de caixa."],
+      ["Aplicação com data de liberação", "Considera Liberados, data de liberação preenchida", "sim", "Apenas no gráfico do fundo de caixa", ""],
+      ["Aplicação sem data de liberação", "Considera Liberados, data de liberação não informada", "nao", "—", "Primeiro ponto a verificar quando uma aplicação some do fluxo."],
       //["Vencimento futuro da aplicação", "Data de resgate prevista na SEH", "dep", "Saldo em aplicações", "Entra como saldo aplicado. Validar se a release projeta a entrada na data de vencimento."],
       ["Aplicação excluída ou estornada", "Registro cancelado", "nao", "—", "Aguardar a proxima carga"]
     ]
